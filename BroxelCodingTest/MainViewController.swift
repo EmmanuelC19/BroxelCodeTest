@@ -31,6 +31,7 @@ class MainViewController: UIViewController,GMSAutocompleteResultsViewControllerD
 	var resultView: UITextView?
 	var hasNeighborhood = false
 	var postalCode = ""
+    var selectedCoutry = ""
 	var weatherView : WeatherView?
 	
 	override func viewDidLoad() {
@@ -92,6 +93,8 @@ class MainViewController: UIViewController,GMSAutocompleteResultsViewControllerD
 		self.cityLabel.text = getInfoFromPlace(place: place, value: "locality")
 		self.stateLabel.text = getInfoFromPlace(place: place, value: "administrative_area_level_1")
 		self.zipCodeLabel.text = getInfoFromPlace(place: place, value: "postal_code")
+        
+        selectedCoutry = getInfoFromPlace(place: place, value: "country")
 		
 		if !hasNeighborhood {
 			self.Neighborhood.text = getInfoFromPlace(place: place, value: "sublocality_level_1")
@@ -149,6 +152,8 @@ class MainViewController: UIViewController,GMSAutocompleteResultsViewControllerD
 				postalCode = value
 			}
 			return "Código Postal: \(String(describing: value))"
+        case "country":
+            return value
 		default:
 			return value
 		}
@@ -169,9 +174,10 @@ class MainViewController: UIViewController,GMSAutocompleteResultsViewControllerD
 		*/
 		
 		// Add URL parameters
+        let code = postalCode  + "," + Utils.getCountryCodeFrom(name: selectedCoutry)
 		let urlParams = [
-			"zip":"01400,mx",
-			"appid":"bd1b00636cb7798b63bba0d9ebb1e55d",
+			"zip": code,
+			"appid":"bd1b00636cb7798b63bba0d9ebb1e55d"
 			]
 		
 		// Fetch Request
@@ -208,7 +214,7 @@ class MainViewController: UIViewController,GMSAutocompleteResultsViewControllerD
 					}
 					
 				} else {
-					debugPrint("HTTP Request failed: \(String(describing: response.result.error))")
+					debugPrint("HTTP Request failed: \(String(describing: response.result.error?.localizedDescription))")
 					DispatchQueue.main.async {
 					SVProgressHUD.showError(withStatus: response.result.error as! String)
 					}

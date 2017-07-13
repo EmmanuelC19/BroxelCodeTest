@@ -59,13 +59,12 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEb-UC-4lb">
-                    <rect key="frame" x="89" y="113" width="122" height="129"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BEb-UC-4lb">
+                    <rect key="frame" x="107" y="113" width="86.5" height="129"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="122" id="EtE-hl-gnI"/>
                         <constraint firstAttribute="height" constant="129" id="Suo-SW-M94"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="49"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="43"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
